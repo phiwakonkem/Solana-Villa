@@ -15,7 +15,7 @@ export default function Footer() {
               Your perfect escape near Kruger National Park and the Panorama Route.
             </p>
             <div className="flex gap-4 mt-6">
-              <a href="https://instagram.com/solanavillas" target="_blank"
+              <a href="https://instagram.com/solana_hazyview" target="_blank"
                 className="text-gray-400 hover:text-[#D4A853] transition-colors text-sm">
                 Instagram
               </a>
@@ -51,14 +51,14 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-gray-300">
               <li className="flex items-center gap-2">
                 <Phone size={14} className="text-gold" />
-                <a href="tel:+27123456789" className="hover:text-gold transition-colors">
-                  +27 12 345 6789
+                <a href="tel:+27723632861" className="hover:text-gold transition-colors">
+                  +27 72 363 2861
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={14} className="text-gold" />
                 <a href="mailto:info@solanavillas.co.za" className="hover:text-gold transition-colors">
-                  info@solanavillas.co.za
+                  reservations@solanavillas.co.za
                 </a>
               </li>
               <li className="flex items-start gap-2">
