@@ -58,14 +58,16 @@ export default function Navbar() {
         {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
           <a href="tel:+27723632861"
-             className={`flex items-center gap-2 text-sm ${
-               scrolled ? 'text-forest' : 'text-white'
-             }`}>
+            className={`flex items-center gap-2 text-sm ${scrolled ? 'text-[#1B4332]' : 'text-white'}`}>
             <Phone size={16} />
-            <span>+27 72 363 2861</span>
+            <span>072 363 2861</span>
           </a>
+          <Link href="/login"
+            className={`text-sm font-medium transition-colors ${scrolled ? 'text-[#1B4332]' : 'text-white'} hover:text-[#D4A853]`}>
+            Login
+          </Link>
           <Link href="/villas"
-                className="bg-gold hover:bg-amber-600 text-white text-sm px-5 py-2.5 rounded transition-colors font-medium">
+            className="bg-[#D4A853] hover:bg-amber-600 text-white text-sm px-5 py-2.5 rounded transition-colors font-medium">
             Book Now
           </Link>
         </div>
