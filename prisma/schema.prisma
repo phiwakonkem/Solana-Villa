@@ -8,10 +8,10 @@ datasource db {
 }
 
 model Property {
-  id              String   @id @default(cuid())
-  slug            String   @unique
+  id              String        @id @default(cuid())
+  slug            String        @unique
   name            String
-  status          String   @default("active")
+  status          String        @default("active")
   tagline         String
   guests          Int
   bedrooms        Int
@@ -24,10 +24,12 @@ model Property {
   amenities       Json
   houseRules      String[]
   externalListing String?
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
   bookings        Booking[]
   housekeepers    Housekeeper[]
+  reviews         Review[]
+  blockedDates    BlockedDate[]
 }
 
 model Booking {
@@ -67,4 +69,23 @@ model Housekeeper {
   property    Property @relation(fields: [propertyId], references: [id])
   checkInDate DateTime @default(now())
   notes       String?
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id])
+  guestName  String
+  rating     Int
+  comment    String
+  createdAt  DateTime @default(now())
+}
+
+model BlockedDate {
+  id         String   @id @default(cuid())
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id])
+  date       DateTime
+  reason     String?
+  createdAt  DateTime @default(now())
 }

@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
+import AvailabilityCalendar from '@/components/admin/AvailabilityCalendar'
 import { useRouter } from 'next/navigation'
 
 interface Property {
@@ -103,6 +104,12 @@ export default function AdminDashboard() {
                   }`}>
             Properties ({properties.length})
           </button>
+        </div>
+
+        <div className="mt-8 grid md:grid-cols-2 gap-6">
+          {properties.filter(p => p.status === 'active').map(p => (
+            <AvailabilityCalendar key={p.id} propertyId={p.id} propertyName={p.name} />
+          ))}
         </div>
 
         {tab === 'bookings' && (

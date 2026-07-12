@@ -28,6 +28,8 @@ model Property {
   updatedAt       DateTime      @updatedAt
   bookings        Booking[]
   housekeepers    Housekeeper[]
+  reviews         Review[]
+  blockedDates    BlockedDate[]
 }
 
 model Booking {
@@ -67,4 +69,23 @@ model Housekeeper {
   property    Property @relation(fields: [propertyId], references: [id])
   checkInDate DateTime @default(now())
   notes       String?
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id])
+  guestName  String
+  rating     Int
+  comment    String
+  createdAt  DateTime @default(now())
+}
+
+model BlockedDate {
+  id         String   @id @default(cuid())
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id])
+  date       DateTime
+  reason     String?
+  createdAt  DateTime @default(now())
 }

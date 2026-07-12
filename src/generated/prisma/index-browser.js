@@ -178,6 +178,23 @@ exports.Prisma.HousekeeperScalarFieldEnum = {
   notes: 'notes'
 };
 
+exports.Prisma.ReviewScalarFieldEnum = {
+  id: 'id',
+  propertyId: 'propertyId',
+  guestName: 'guestName',
+  rating: 'rating',
+  comment: 'comment',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.BlockedDateScalarFieldEnum = {
+  id: 'id',
+  propertyId: 'propertyId',
+  date: 'date',
+  reason: 'reason',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -208,7 +225,9 @@ exports.Prisma.ModelName = {
   Property: 'Property',
   Booking: 'Booking',
   User: 'User',
-  Housekeeper: 'Housekeeper'
+  Housekeeper: 'Housekeeper',
+  Review: 'Review',
+  BlockedDate: 'BlockedDate'
 };
 
 /**
