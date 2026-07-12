@@ -4,21 +4,36 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
 export async function POST(req: NextRequest) {
-  const { name, email, phone, password } = await req.json()
+  try {
+    const { name, email, phone, password } = await req.json()
 
-  const existing = await prisma.user.findUnique({ where: { email } })
-  if (existing) return NextResponse.json({ error: 'Email already registered' }, { status: 400 })
+    if (!name || !email || !password) {
+      return NextResponse.json({ error: 'Name, email and password are required' }, { status: 400 })
+    }
 
-  const passwordHash = await bcrypt.hash(password, 10)
-  const user = await prisma.user.create({
-    data: { name, email, phone, passwordHash, isAdmin: false }
-  })
+    const existing = await prisma.user.findUnique({ where: { email } })
+    if (existing) {
+      return NextResponse.json({ error: 'An account with this email already exists' }, { status: 400 })
+    }
 
-  const token = jwt.sign({ userId: user.id, isAdmin: false }, process.env.JWT_SECRET!, { expiresIn: '30d' })
+    const passwordHash = await bcrypt.hash(password, 10)
+    const user = await prisma.user.create({
+      data: { name, email, phone, passwordHash, isAdmin: false }
+    })
 
-  return NextResponse.json({
-    success: true,
-    token,
-    user: { id: user.id, name: user.name, email: user.email }
-  })
+    const token = jwt.sign(
+      { userId: user.id, isAdmin: false },
+      process.env.JWT_SECRET!,
+      { expiresIn: '30d' }
+    )
+
+    return NextResponse.json({
+      success: true,
+      token,
+      user: { id: user.id, name: user.name, email: user.email }
+    })
+  } catch (error) {
+    console.error('Signup error:', error)
+    return NextResponse.json({ error: 'Server error. Please try again.' }, { status: 500 })
+  }
 }

@@ -1,5 +1,6 @@
 import Hero from '@/components/home/Hero'
 import FeaturedVillas from '@/components/home/FeaturedVillas'
+import AvailabilityWidget from '@/components/home/AvailabilityWidget'
 import WhyChooseUs from '@/components/home/WhyChooseUs'
 import LocationHighlights from '@/components/home/LocationHighlights'
 import Reviews from '@/components/home/Reviews'
@@ -10,6 +11,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <AvailabilityWidget />
       <FeaturedVillas />
       <WhyChooseUs />
       <LocationHighlights />
