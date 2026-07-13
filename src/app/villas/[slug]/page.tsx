@@ -6,8 +6,9 @@ import VillaGallerySplit from '@/components/villas/VillaGallerySplit'
 import BookingForm from '@/components/villas/BookingForm'
 import ReviewSection from '@/components/villas/ReviewSection'
 
-export default function VillaPage({ params }: { params: { slug: string } }) {
-  const villa = getProperty(params.slug)
+export default async function VillaPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const villa = getProperty(slug)
   if (!villa) return notFound()
 
   if (villa.status === 'coming-soon') {
@@ -38,7 +39,6 @@ export default function VillaPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="min-h-screen bg-[#FAF7F2]">
-      {/* Hero */}
       <div className="relative h-[70vh] overflow-hidden">
         <img
           src={villa.exteriorImages[0] || villa.interiorImages[0]}

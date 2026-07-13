@@ -6,8 +6,11 @@ import WhatsAppButton from '@/components/ui/WhatsAppButton'
 
 export const metadata: Metadata = {
   title: 'Solana Villas | Luxury Holiday Accommodation in Mpumalanga',
-  description: 'Experience exceptional luxury villa accommodation in the heart of Mpumalanga.',
-  keywords: 'luxury villas Mpumalanga, holiday accommodation Hazyview, Kruger National Park',
+  description: 'Experience exceptional luxury villa accommodation in the Sabie River Eco Estate, Hazyview. Minutes from Kruger National Park.',
+  keywords: 'luxury villas Mpumalanga, holiday accommodation Hazyview, Kruger National Park, self-catering villas South Africa',
+  icons: {
+    icon: '/favicon.ico',
+  },
   openGraph: {
     title: 'Solana Villas | Luxury Holiday Accommodation in Mpumalanga',
     description: 'Discover luxury villas designed for unforgettable escapes in Mpumalanga.',
